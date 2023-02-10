@@ -99,26 +99,53 @@ public class Sorting {
         return message;
     }
 
-    public static void binarySearch (int[] array, int desNum){
-        int left = 0;
-        int right = array.length - 1;
-        while (true){
-            int mid = (right - left + 1)/2;
-            if (array[mid] > desNum){
-                right = mid;
-            } else if (array[mid] < desNum) {
-                left = mid;
-            } else if (array[mid] == desNum) {
-                System.out.println("YES");
-                break;
-            }else {
-                System.out.println("NO");
-                break;
+    //Четвертая задача
+    public static String binarySearch (int[] array, int desNum){
+        int left = -1;
+        int right = array.length;
+        String messege = "Число " + desNum;
+        while ((right - left) > 1){
+            int mid = (right + left)/2;
+            if (array[mid] == desNum) {
+                messege += " найдено в массиве под индексом" + mid;
+                return messege;
             }
+            else if (array[mid] > desNum)
+                right = mid;
+            else
+                left = mid;
         }
-
+        if (array[right - left] == desNum)
+            messege += " найдено в массиве под индексом" + (right - left);
+        else
+            messege += " не найдено";
+        return messege;
     }
 
+    //Пятая задача
+    public static String approxBinarySearch (int[] array, int desNum){
+        int left = -1;
+        int right = array.length;
+        String messege = "Ближайшее число в массиве к " + desNum + " равно ";
+        while ((right - left) > 1){
+            int mid = (right + left)/2;
+            if (array[mid] == desNum){
+                messege += array[mid];
+                return messege;
+            }
+            else if (array[mid] > desNum)
+                right = mid;
+            else
+                left = mid;
+        }
+        if (left < 0)
+            messege += array[right];
+        else if (right >= array.length || desNum - array[left] < array[right] - desNum)
+            messege += array[left];
+        else
+            messege += array[right];
+        return messege;
+    }
 
     /**
      * Метод создает массив случайных натуральных чисел ограниченных диапозоном от minValue до maxValue.
