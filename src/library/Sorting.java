@@ -48,8 +48,8 @@ public class Sorting {
     }
 
     //Вторая задача
-    public static int[] sortingByCounting(int arrayLength){
-        int[] array = randomArray(arrayLength, 10, 1);
+    public static int[] sortingByCounting(int[] array){
+        int[] newArray = new int[array.length];
         int max = maxValue(array);
         int min = minValue(array);
 
@@ -57,12 +57,12 @@ public class Sorting {
         for (int j = min; j <= max; j++) {
             for (int i = 0; i < array.length; i++) {
                 if (array[i] == j){
-                    array[new_i] = array[i];
+                    newArray[new_i] = array[i];
                     new_i++;
                 }
             }
         }
-        return array;
+        return newArray;
     }
 
     private static int maxValue(int[] array){
@@ -97,6 +97,26 @@ public class Sorting {
             }
         }
         return message;
+    }
+
+    public static void binarySearch (int[] array, int desNum){
+        int left = 0;
+        int right = array.length - 1;
+        while (true){
+            int mid = (right - left + 1)/2;
+            if (array[mid] > desNum){
+                right = mid;
+            } else if (array[mid] < desNum) {
+                left = mid;
+            } else if (array[mid] == desNum) {
+                System.out.println("YES");
+                break;
+            }else {
+                System.out.println("NO");
+                break;
+            }
+        }
+
     }
 
 

@@ -5,16 +5,17 @@ import static library.Sorting.*;
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        int number;
 
         System.out.print("Сортировка слиянием. \nВведите длину массива: ");
-        int number = input.nextInt();
+        number = input.nextInt();
         for (int item : mergeSort(randomArray(number, 100, 10))) {
             System.out.printf("[%d] ", item);
         }
 
         System.out.print("\nСортировка подсчетом. \nВведите длину массива: ");
         number = input.nextInt();
-        for (int item : sortingByCounting(number)) {
+        for (int item : sortingByCounting(randomArray(number, 10, 1))) {
             System.out.printf("[%d] ", item);
         }
 
@@ -22,5 +23,9 @@ public class Main {
                 "\n то они также будут отсортированы по качеству. Проверим утверждение Димы.\nВведите кол-во ноутбуков: ");
         number = input.nextInt();
         System.out.println(compareIncrease(number));
+
+        System.out.print("\nБинарный поиск. \nВведите число для поиска в массиве от 1 до 20: ");
+        number = input.nextInt();
+        binarySearch(sortingByCounting(randomArray(10, 20, 1)), number);
     }
 }
