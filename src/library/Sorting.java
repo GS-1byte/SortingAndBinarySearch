@@ -1,6 +1,7 @@
 package library;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Sorting {
 
@@ -145,6 +146,47 @@ public class Sorting {
         else
             messege += array[right];
         return messege;
+    }
+
+    //Шестая задача
+    public static void guessMyNumber(){
+        Scanner input = new Scanner(System.in);
+        int left = 0;
+        int right = (int)Math.pow(10,6) + 1;
+        String answer;
+        while ((right - left) > 1){
+            int mid = (right + left)/2;
+            System.out.println("Ваше число больше или меньше " + mid + "?");
+            answer = input.next();
+            if (answer.equals(">")){
+                left = mid;
+            } else if (answer.equals("<")) {
+                right = mid;
+            } else if (answer.equals("=")){
+                System.out.println("Загаданное число " + mid);
+                break;
+            }
+        }
+        System.out.println("Загаданное число " + (left));
+    }
+
+    //Седьмая задача
+    public static int solution(int value){
+        int left = 0;
+        int right = (int)Math.pow(10,5);
+        while ((right-left) > 1){
+            int mid = (right + left)/2;
+            if(func(mid, value) < 0)
+                left = mid;
+            else if (func(mid, value) > 0)
+                right = mid;
+            else
+                return mid;
+        }
+        return 0;
+    }
+    private static double func(int x, int c){
+        return Math.pow(x, 2) + Math.pow(x, 0.5) - c;
     }
 
     /**

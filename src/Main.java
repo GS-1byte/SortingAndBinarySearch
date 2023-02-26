@@ -7,7 +7,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         int number;
 
-        /*System.out.print("Сортировка слиянием. \nВведите длину массива: ");
+        System.out.print("Сортировка слиянием. \nВведите длину массива: ");
         number = input.nextInt();
         for (int item : mergeSort(randomArray(number, 100, 10))) {
             System.out.printf("[%d] ", item);
@@ -22,11 +22,19 @@ public class Main {
         System.out.print("\nC точки зрения Димы, если ноутбуки будут отсортированы по возрастанию цены," +
                 "\n то они также будут отсортированы по качеству. Проверим утверждение Димы.\nВведите кол-во ноутбуков: ");
         number = input.nextInt();
-        System.out.println(compareIncrease(number));*/
+        System.out.println(compareIncrease(number));
 
         System.out.print("\nБинарный поиск. \nВведите число для поиска в массиве от 1 до 20: ");
         number = input.nextInt();
         System.out.println(binarySearch(sortingByCounting(randomArray(10, 20, 1)), number));
         System.out.println(approxBinarySearch(sortingByCounting(randomArray(10, 20, 1)), number));
+
+        System.out.println("Загадайте челое число от 1 до 1 000 000");
+        guessMyNumber();
+
+        System.out.print("\nВведите целое число C, чтобы найти такое значение Х, удовлетворяющего равенство Х^2 + X^0.5 = C " +
+                         "\nВслучае если Х не будет найден, программа выведет ноль \nC = ");
+        number = input.nextInt();
+        System.out.println(solution(number));
     }
 }
